@@ -3,16 +3,15 @@
     <nav>
       <ul>
         <li>
-       <router-link to="/teams">Team</router-link>
+          <router-link to="/teams">Teams</router-link>
         </li>
         <li>
-           <router-link to="/users">Users</router-link>
+          <router-link to="/users">Users</router-link>
         </li>
       </ul>
     </nav>
   </header>
 </template>
-
 
 <style scoped>
 header {
@@ -40,7 +39,7 @@ li {
 }
 
 a {
-  font: inherit;
+  text-decoration: none;
   background: transparent;
   border: 1px solid transparent;
   cursor: pointer;
@@ -50,7 +49,8 @@ a {
 }
 
 a:hover,
-a:active {
+a:active,
+.active{
   color: #f1a80a;
   border-color: #f1a80a;
   background-color: #1a037e;
