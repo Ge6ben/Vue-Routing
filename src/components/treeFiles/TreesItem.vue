@@ -7,7 +7,7 @@
 
             </header>
         
-        <p>{{Hint}}</p>
+        <p>{{hint}}</p>
         <nav>
             <a :href="location">Location on Google map</a>
         </nav>
@@ -19,7 +19,7 @@ import BaseButton from '../UI/BaseButton.vue'
 
 
 export default {
-props:['id','location' ,'place', 'Hint' ],
+props:['id','location' ,'place', 'hint' ],
 inject:['deleteTree']
 ,
 components:{

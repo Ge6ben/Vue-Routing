@@ -1,16 +1,26 @@
 <template>
-<ul>
-  <trees-item v-for="tree in trees" :key='tree.id' :location='tree.location' :place='tree.place' :Hint='tree.Hint' :id='tree.id' ></trees-item> 
+<base-card v-if="isLoading">Loading....</base-card>
+<ul v-else>
+  
+   <trees-item v-for="tree in trees" :key='tree.id' :location='tree.Location' :place='tree.Place' :hint='tree.Hint' :id='tree.id'  ></trees-item> 
 </ul>
 </template>
 <script>
+import BaseCard from '../UI/BaseCard.vue';
 import TreesItem from './TreesItem.vue';
+
 export default{
-    inject :['trees'],
+
+props :['trees','isLoading'],
     components:{
-        TreesItem
-    }
+        TreesItem,
+        BaseCard
+    },
+methods:{
+  }
+
 }
+
 </script>
 <style scoped>
 ul {

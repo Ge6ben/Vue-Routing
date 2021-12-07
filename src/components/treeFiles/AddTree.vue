@@ -36,9 +36,11 @@
         <input type="text" id="location" name="location" ref="locationInp" />
       </div>
 
-      <div>
+        
+        <div>
         <base-button type="submit">Add Tree</base-button>
-        <p v-if="error">{{error}}</p>
+       <p v-if="error">{{error}}</p> 
+      
       </div>
     </form>
   </base-card>
@@ -59,7 +61,7 @@ export default {
   data() {
     return {
       inputIsInvalid: false,
-      error:null
+      error:null,
     };
   },
   methods: {
