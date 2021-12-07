@@ -1,20 +1,23 @@
 <template>
-<!-- S -->
-  <base-dialog v-if="inputIsInvalid" title="Invalid Input"  @close="confirmError">
+  <!-- S -->
+  <base-dialog
+    v-if="inputIsInvalid"
+    title="Invalid Input"
+    @close="confirmError"
+  >
     <template #default>
       <p>Unfortunatly input value is invalid</p>
       <p>
         Please check all inputs and make sure to enter at least one character
       </p>
     </template>
- 
-<template #actions>
-  <base-button @click="confirmError">Okay</base-button>
- </template>
 
-</base-dialog>
+    <template #actions>
+      <base-button @click="confirmError">Okay</base-button>
+    </template>
+  </base-dialog>
 
-<!-- E -->
+  <!-- E -->
 
   <base-card>
     <form @submit.prevent="handleSubmit">
@@ -35,6 +38,7 @@
 
       <div>
         <base-button type="submit">Add Tree</base-button>
+        <p v-if="error">{{error}}</p>
       </div>
     </form>
   </base-card>
@@ -42,18 +46,20 @@
 
 <script>
 import BaseCard from '../UI/BaseCard.vue';
-import BaseButton from '../UI/BaseButton.vue'
-import BaseDialog from '../UI/BaseDialog.vue'
+import BaseButton from '../UI/BaseButton.vue';
+import BaseDialog from '../UI/BaseDialog.vue';
 
 export default {
-   components:{
-  BaseCard,BaseButton,
-  BaseDialog
-},
+  components: {
+    BaseCard,
+    BaseButton,
+    BaseDialog,
+  },
   inject: ['addNewTree'],
   data() {
     return {
       inputIsInvalid: false,
+      error:null
     };
   },
   methods: {
@@ -65,19 +71,41 @@ export default {
         enteredPlace.trim() === '' ||
         enteredLocation.trim() === '' ||
         enteredHint.trim() === ''
-      )
-      {
-          this.inputIsInvalid=true;
-       return; 
-       }
-       
-      this.addNewTree(enteredPlace, enteredHint, enteredLocation);
-    },
+      ) {
+        this.inputIsInvalid = true;
+        return;
+      }
+      fetch(
+        'https://breathe-free-daa83-default-rtdb.firebaseio.com/addtree.json',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            Place: enteredPlace,
+            Hint: enteredHint,
+            Location: enteredLocation,
+          }),
+        }
+      ).then((res)=>{
+        if(res.ok){
+          console.log(res)
+        }
+        else{
+          throw new Error('Couldnt save Data')
+        }
+      }).catch((err)=>{
+        console.log(err)
+        this.error = err.message
+      })
+
+     },
+
     confirmError() {
-        this.inputIsInvalid = false
+      this.inputIsInvalid = false;
     },
   },
-  
 };
 </script>
 

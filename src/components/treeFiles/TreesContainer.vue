@@ -4,7 +4,6 @@
 </ul>
 </template>
 <script>
-// console.log(this.trees)
 import TreesItem from './TreesItem.vue';
 export default{
     inject :['trees'],
