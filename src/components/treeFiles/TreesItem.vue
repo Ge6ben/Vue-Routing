@@ -3,7 +3,7 @@
         <base-card>
             <header>
                 <h3> {{place}}</h3>
-                <base-button  @click="deleteTree(id)">Delete</base-button>
+                <base-button >Delete</base-button>
 
             </header>
         
@@ -20,8 +20,6 @@ import BaseButton from '../UI/BaseButton.vue'
 
 export default {
 props:['id','location' ,'place', 'hint' ],
-inject:['deleteTree']
-,
 components:{
   BaseCard,BaseButton
 }
