@@ -3,7 +3,7 @@
         <base-card>
             <header>
                 <h3> {{place}}</h3>
-                <base-button  :click="handle_Delete(id)">Delete</base-button>
+                <base-button @click='handleDelete'>Delete</base-button>
 
             </header>
         
@@ -20,10 +20,14 @@ import BaseButton from '../UI/BaseButton.vue'
 
 export default {
 props:['id','location' ,'place', 'hint' ],
-
-inject:['handle_Delete'],
 components:{
   BaseCard,BaseButton
+},
+emits:['handleDelete'],
+methods:{
+  handleDelete(){
+    this.$emits('handleDelete',this.id)
+  }
 }
 
 }

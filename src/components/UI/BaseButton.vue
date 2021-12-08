@@ -36,4 +36,9 @@ button:active {
 .flat:active {
   background-color: #edd2ff;
 }
+.justfyBetween{
+  display: flex;
+  justify-content: space-between
+  ;
+}
 </style>

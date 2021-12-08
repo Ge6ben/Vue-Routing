@@ -1,9 +1,19 @@
 <template>
-<base-card v-if="isLoading">Loading....</base-card>
-<ul v-else>
-  
-   <trees-item v-for="tree in trees" :key='tree.id' :location='tree.Location' :place='tree.Place' :hint='tree.Hint' :id='tree.id'></trees-item> 
-</ul>
+
+  <base-card v-if="isLoading">Loading....</base-card>
+   <base-card v-if="error">Faild to fetch data please try again later</base-card>
+  <ul v-else>
+    <trees-item
+      v-for="tree in storedTrees"
+      :key="tree.id"
+      :location="tree.Location"
+      :place="tree.Place"
+      :hint="tree.Hint"
+      :id="tree.id"
+      @handleDelete='handleDelete'
+    ></trees-item>
+  </ul>
+ 
 </template>
 <script>
 import BaseCard from '../UI/BaseCard.vue';
@@ -11,16 +21,65 @@ import TreesItem from './TreesItem.vue';
 
 export default{
 
-props :['trees','isLoading'],
-// emits:['handle_Delete'],
+ data() {
+    return {
+      isLoading: false,
+      error: false,
+      storedTrees: [],
+    };
+  },
+
+// props :['trees','isLoading'],
     components:{
         TreesItem,
         BaseCard
     },
 methods:{
-  }
+   getTrees() {
+      this.isLoading = true;
+         fetch(
+        'https://breathe-free-daa83-default-rtdb.firebaseio.com/addtree.json'
+      )
+        .then((res) => {
+           
+          if (res.ok) return res.json();
+        })
+        .then((data) => {
+          this.isLoading = false;
+          var treesInfo = [];
+          for (const id in data) {
+            treesInfo.push({
+              id: id,
+              Place: data[id].Place,
+              Hint: data[id].Hint,
+              Location: data[id].Location,
+            })
+          }
+          
+          this.storedTrees = treesInfo
+        })
+        .catch((err) => {
+          console.log(err)
+          this.isLoading=false;
+          this.error=true
+        })
+   }
 
+,
+methods:{
+  handleDelete(){
+ console.log(this.id) 
 }
+}
+}
+
+,
+mounted(){
+  this.getTrees();
+}
+}  
+
+
 
 </script>
 <style scoped>

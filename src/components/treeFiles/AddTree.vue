@@ -57,7 +57,7 @@ export default {
     BaseButton,
     BaseDialog,
   },
-  // inject: ['addNewTree'],
+  
   data() {
     return {
       inputIsInvalid: false,

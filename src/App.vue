@@ -7,11 +7,11 @@
 </template>
 
 <script>
-import TheTree from './components/treeFiles/TheTrees.vue';
+
 import TheHeader from './components/layouts/TheNav.vue';
 export default {
   components:{
-    TheTree,
+  
     TheHeader
     
   }

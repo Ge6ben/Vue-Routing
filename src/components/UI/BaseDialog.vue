@@ -21,6 +21,7 @@
 </template>
 
 <script>
+import BaseButton from '../UI/BaseButton.vue';
 export default {
    emits:['close'],
   props: {
@@ -29,6 +30,9 @@ export default {
       required: false,
     },
   },
+  components:{
+    BaseButton
+  }
 };
 </script>
 
