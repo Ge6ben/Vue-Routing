@@ -10,6 +10,7 @@
       :place="tree.Place"
       :hint="tree.Hint"
       :id="tree.id"
+      @handleDelete='handleDelete'
     ></trees-item>
   </ul>
  
@@ -63,7 +64,15 @@ methods:{
           this.error=true
         })
    }
+
+,
+methods:{
+  handleDelete(){
+ console.log(this.id) 
 }
+}
+}
+
 ,
 mounted(){
   this.getTrees();

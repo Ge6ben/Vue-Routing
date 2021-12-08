@@ -3,7 +3,7 @@
         <base-card>
             <header>
                 <h3> {{place}}</h3>
-                <base-button >Delete</base-button>
+                <base-button @click='handleDelete'>Delete</base-button>
 
             </header>
         
@@ -22,6 +22,12 @@ export default {
 props:['id','location' ,'place', 'hint' ],
 components:{
   BaseCard,BaseButton
+},
+emits:['handleDelete'],
+methods:{
+  handleDelete(){
+    this.$emits(handleDelete,this.id)
+  }
 }
 
 }
