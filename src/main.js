@@ -1,9 +1,27 @@
 import { createApp } from 'vue';
-
+import {createRouter,createWebHistory} from 'vue-router'
 // import firebase from 'firebase/compat/app'
 // import  initializeApp from 'firebase/app';
+// import TreesContainer from './components/treeFiles/TreesContainer';
+import NotFoundPage from './components/UI/NotFoundPage'
 
 import App from './App.vue';
+import TheTrees from './components/treeFiles/TheTrees.vue';
+
+
+const router = createRouter({
+    history:createWebHistory(),
+    routes:[
+        
+        {
+            path:'/',component:TheTrees
+        }
+        ,{
+            
+            path:'/404' , component:NotFoundPage
+        }
+    ]
+})
 
 // Import the functions you need from the SDKs you need
 // import { initializeApp } from "firebase/compat/app";
@@ -26,7 +44,7 @@ import App from './App.vue';
 
 // console.log(firebase)
 const app = createApp(App);
-
+app.use(router)
 // firebase.initializeApp(firebaseConfig);
 
 app.mount('#app');
