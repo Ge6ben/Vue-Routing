@@ -7,6 +7,10 @@ import AddTree from './components/treeFiles/AddTree.vue';
 const router = createRouter({
     history:createWebHistory(),
     routes:[    
+        // {
+        //     path:'/',component:TheHeader,props:true
+        // }
+        // ,
         {
             path:'/trees',component:TreesContainer ,props:true
         },

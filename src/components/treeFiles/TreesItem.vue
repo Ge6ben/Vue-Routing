@@ -23,10 +23,11 @@ props:['id','location' ,'place', 'hint' ],
 components:{
   BaseCard,BaseButton
 },
-emits:['handleDelete'],
+// emits:['handle-delete'],
 methods:{
   handleDelete(){
-    this.$emits(handleDelete,this.id)
+    
+    this.$emit("handleDeleteItem",this.id)
   }
 }
 

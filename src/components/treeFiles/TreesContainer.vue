@@ -10,7 +10,7 @@
       :place="tree.Place"
       :hint="tree.Hint"
       :id="tree.id"
-      @handleDelete='handleDelete'
+      @handleDeleteItem='handleRemoveItem($event)'
     ></trees-item>
   </ul>
  
@@ -65,11 +65,14 @@ methods:{
         })
    }
 
+
 ,
-methods:{
-  handleDelete(){
- console.log(this.id) 
-}
+ handleRemoveItem(_id){
+  console.log(_id)
+  // this.storedTrees=this.storedTrees.filter(tree => tree.id !== _id)
+  // OR
+  const selectedId = this.storedTrees.findIndex(res => res.id === _id);
+   this.storedTrees.splice(selectedId,1)
 }
 }
 
