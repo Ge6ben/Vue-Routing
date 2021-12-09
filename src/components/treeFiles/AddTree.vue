@@ -19,7 +19,9 @@
 
   <!-- E -->
 
-  <base-card>
+
+
+    <base-card>
     <form @submit.prevent="handleSubmit">
       <div class="form-control">
         <label for="place">Address</label>

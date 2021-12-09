@@ -23,7 +23,7 @@ props:['id','location' ,'place', 'hint' ],
 components:{
   BaseCard,BaseButton
 },
-// emits:['handle-delete'],
+
 methods:{
   handleDelete(){
     
