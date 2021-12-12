@@ -2,17 +2,17 @@
   <main>
     
    <TheHeader />
-    <the-tree></the-tree>
+   
+    <router-view></router-view>
+
    </main>
 </template>
 
 <script>
-
 import TheHeader from './components/layouts/TheNav.vue';
 export default {
   components:{
-  
-    TheHeader
+    TheHeader,
     
   }
 }

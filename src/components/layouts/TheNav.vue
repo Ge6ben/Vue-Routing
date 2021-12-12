@@ -4,7 +4,7 @@
   </header>
   <base-card class="justfyBetween">
     <base-button @click="setSelectedTab('trees-container')" :mode="treesMode">
-      <router-link to="/trees">Trees Already Exist</router-link>
+      <router-link to="/">Trees Already Exist</router-link>
     </base-button>
 
     <base-button @click="setSelectedTab('add-tree')" :mode="addTreeMode">

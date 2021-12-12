@@ -19,7 +19,9 @@
 
   <!-- E -->
 
-  <base-card>
+
+
+    <base-card>
     <form @submit.prevent="handleSubmit">
       <div class="form-control">
         <label for="place">Address</label>
@@ -65,7 +67,7 @@ export default {
     };
   },
   methods: {
-    handleSubmit() {
+  async  handleSubmit() {
       const enteredPlace = this.$refs.placeInp.value;
       const enteredLocation = this.$refs.locationInp.value;
       const enteredHint = this.$refs.hintInp.value;
@@ -77,7 +79,7 @@ export default {
         this.inputIsInvalid = true;
         return;
       }
-      fetch(
+    await  fetch(
         'https://breathe-free-daa83-default-rtdb.firebaseio.com/addtree.json',
         {
           method: 'POST',
@@ -101,6 +103,7 @@ export default {
         console.log(err)
         this.error = err.message
       })
+     this.$router.push('/')
      },
 
     confirmError() {
